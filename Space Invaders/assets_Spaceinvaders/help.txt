@@ -1,0 +1,5 @@
+IF the game won't start and throws any type of file error
+Please goto line 13 ,then:- 
+                    Replace :- f"{z}\Space Invaders\\assets_Spaceinvaders\\"
+                    With the directory path of assets_Spaceinvaders Folder
+    -----It will help to load all the required files-----
