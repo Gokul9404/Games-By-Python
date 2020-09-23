@@ -1,0 +1,13 @@
+----------------------    Error Occured during running the code   ----------------------
+IF the game won't start and throws any type of file error
+Please goto line 13 ,then:- 
+                    Replace :- f"{z}\Space Invaders\\assets_Spaceinvaders\\"
+                    With the directory path of assets_Spaceinvaders Folder
+-----------------------It will help to load all the required files-----------------------
+-----------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------
+Controls of the Game:
+    Fire :- Space or Click Mouse Button
+    Move Player :- Left & Right Arrow Key
