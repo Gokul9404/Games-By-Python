@@ -1,0 +1,8 @@
+If the game does not open then :-
+        -> Go To line 30 of the Traffic-racer.py
+        -> Change the path = "E:\\pyhton progs\\new assets" to the folder's directory path
+            where the Assets folder exist
+
+-----------------------------------------------------------------------------------------
+Controls of the Game:
+    Move Player :- Left & Right Arrow Key
