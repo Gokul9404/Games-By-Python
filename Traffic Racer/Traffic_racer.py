@@ -33,6 +33,7 @@ def import_assets():
     background = pygame.image.load(os.path.join(f"{path}","Assets\\Road_Main.png"))            # BackGround Image Of Game Screen
     crash = pygame.image.load(os.path.join(f"{path}","Assets\\carcrash.png"))                  # Car Crash Image
     crash_sound = mixer.Sound(os.path.join(f"{path}","Assets\\crash.wav"))                     # Car Crash Sound
+    mixer.music.load(os.path.join(f"{path}","Assets\\back_music.wav"))
     Car1 = pygame.image.load(os.path.join(f"{path}","Assets\\car02.png"))                      # Other Car's
     Car2 = pygame.image.load(os.path.join(f"{path}","Assets\\car03.png"))                      # Other Car's
     Car3 = pygame.image.load(os.path.join(f"{path}","Assets\\car04.png"))                      # Other Car's
@@ -91,6 +92,9 @@ def Game_screen():
     Home_Button = button(top_colour,5,2,80,25,text="Home", font_size=20)     # Home Button
     Exit_Button = button(top_colour,615,2,80,25,text="Exit", font_size=20)   # Exit Button
     Enemy_car = Enemy_car_coordinate()
+    # Play the Back-ground Music
+    mixer.music.load(os.path.join(f"{path}","Assets\\back_music.wav"))
+    mixer.music.play(-1)
     # Enemy Car's Images, it's X & Y Co-ordinates List, with First Enemy car too
     car_enemy, car_enemy_x, car_enemy_y = [Enemy_car[0]], [Enemy_car[1]], [Enemy_car[2]]
     while Game_run_screen:
