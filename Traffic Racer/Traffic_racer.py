@@ -167,6 +167,7 @@ def Game_screen():
         if Finnish:                                                 #=> If car's had collided then Game get's Finished 
             playerX_change = 0
             time.sleep(1)
+            score_value, level_value = 0, 1
             Game_run_screen , home_start = False , True
         if home_start: Home_screen()
         if Exitt: pygame.quit()

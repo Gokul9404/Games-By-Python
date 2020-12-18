@@ -41,19 +41,16 @@ def sps_btnClick(Butns):
 
 def sps_lose():
     global sps_lbl2, sps_Comp_score
-    print(f"you lose  {sps_C_c}")
     sps_Comp_score += 1 
     sps_lbl2["text"]= f"Computer Score :- {sps_Comp_score}"
 
 def sps_won():
     global sps_lbl1, sps_Player_score
     sps_Player_score += 1
-    print(f'you won   {sps_C_c}')
     sps_lbl1["text"] = f"Player Score :- {sps_Player_score}"
 
 def sps_tie():
     global sps_lbl3
-    print(f"It is a tie   {sps_C_c}")
     sps_lbl3["text"] =" There is a Tie \n Between Player and Computer"
 
 def sps_fin():

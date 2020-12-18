@@ -2,14 +2,12 @@
 gm_board = ['-','-','-',
             '-','-','-',
             '-','-','-']
-
 # Starting Player
 player = "x"
 # Winner constant
 winner = None
 # Game is going on
 Game_on = True
-
 #__________________________Below Functios are Used to Play the Game and Update the Board_______________________________________________
 # Show The Game Board
 def show_gm_board():
@@ -61,7 +59,6 @@ def play():
         inputt()
         check_Finish()
 
-
 #_______________________Below Functios are Used to Check whether the Game need to be Finished or not____________________________________
 def check_Finish():
     Check_win()
@@ -69,7 +66,7 @@ def check_Finish():
 
 # Checks for a winner
 def Check_win():
-    global winner, Game_on
+    global winner, Game_on, winnner
     row_win = check_rows()
     column_win = check_columns()
     daigonal_win = check_diagonals()
@@ -84,7 +81,7 @@ def Check_win():
         return None
     # If any Player won then showing it
     if winner == "o" or winner == "x":
-        Game_on = False
+        Game_on, winnner = False, True
         print()
         show_gm_board()
         print()
@@ -143,8 +140,8 @@ def check_diagonals():
 
 # Check if there is a tie
 def check_tie():
-  global Game_on
-  if "-" not in gm_board:
+  global Game_on, winnner
+  if "-" not in gm_board and not winnner:
     Game_on = False
     show_gm_board()
     print(" ------------ Game Over!! ------------ ")
@@ -153,7 +150,6 @@ def check_tie():
     return True
   else:
     return False
-
 
 # Play The Game 
 if __name__ == "__main__":
