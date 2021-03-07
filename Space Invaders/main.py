@@ -5,7 +5,6 @@ pygame.init()
 #=======================================================================================================================================
 # Function to Import Every File 
 z = os.getcwd()
-print(z)
 path = f"{z}\\Games\\Space Invaders\\assets_Spaceinvaders\\"
 #=======================================================================================================================================
 def import_game_files():
@@ -98,7 +97,7 @@ class button():
     def draw(self, windoow, outline=None):
         if outline:
             pygame.draw.rect(windoow, outline, (self.x-2, self.y-2,self.width+2,self.height+2))
-        pygame.draw.rect(windoow, self.colour, (self.x, self.y, self.width, self.height), 0)
+        pygame.draw.rect(windoow, self.colour, (self.x, self.y, self.width, self.height))
         if self.text != " ":
             But_font = pygame.font.SysFont('forte',self.font_size)
             But_text = But_font.render(self.text, 1,self.font_colour)
@@ -147,7 +146,8 @@ def Game_screen():
             enemyY.append(random.randint(50, 125))
             enemyX_change.append(4)
         start_game = False
-    game_run, home_screen = True, False         # Game Loop
+    game_run, home_screen, Game_over = True, False, False   # Game Loop
+    score_value , level_value = 0, 1
     while game_run:
         screen.blit(background_Game, (0, 0))                # Background Image
         show_score()
@@ -180,8 +180,7 @@ def Game_screen():
             if enemyY[i] > 428:             # Game Over 
                 for j in range(num_of_enemies):
                     enemyY[j] = 2000
-                game_run = False
-                game_over_screen()
+                game_run, Game_over = False, True
                 break
             enemyX[i] += enemyX_change[i]
             if enemyX[i] <= 0:
@@ -214,6 +213,7 @@ def Game_screen():
         screen.blit(playerImg, (playerX, playerY))
         pygame.display.update()
         if home_screen: Home_screen()
+        if Game_over: game_over_screen()
 #=======================================================================================================================================
 def game_over_screen():
     """When user loses the game, this Screen appears"""
