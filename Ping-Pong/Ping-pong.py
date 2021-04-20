@@ -38,7 +38,7 @@ Paddle_Colour = Colours[2]
 Colour = [0,1,2,3]
 
 # Basic Path of the Asset File-folder
-path = "E:\\Python Programs\\Basic Programs\\Ping-Pong"
+path = "E:\\Python Programs\\Games\\Ping-Pong"
 def import_game_files():
     """Returns True if all the required images and sound effect are imported and available for the game"""
     global path
