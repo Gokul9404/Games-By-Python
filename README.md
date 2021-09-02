@@ -1,6 +1,6 @@
 # Games-By-Python
 or
-# Simple Games by Pyhton
+# Simple Games by Python
 ---
 There are so many Board Games or Arcade Games which we had Played at least once in the Life. \
 This Repository contains some of those games like :- \
