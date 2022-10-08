@@ -90,7 +90,6 @@ def Home_screen():
         Window.blit(surf,(0,0))
         # Updating the Display
         pygame.display.update()
-
         if qt: pygame.quit()
 
 def Game_screen():

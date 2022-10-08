@@ -8,7 +8,7 @@ from pygame import K_UP, K_DOWN, K_RIGHT, K_LEFT,K_SPACE,K_UP,K_ESCAPE,K_r,K_a,K
 #============================================ Initialise Pygame ============================================
 init()
 #============================================ Caption and Icon ============================================
-pygame.display.set_caption('Ping Pong')
+pygame.display.set_caption('No Way Down')
 #============================================ Create the screen ============================================
 Width, Height = 600, 600
 WindowSize = (Width, Height) 
