@@ -16,7 +16,7 @@ screen = pygame.display.set_mode(WindowSize)
 #============================================ Game Surface to render ============================================
 Game_Surface = Surface(WindowSize)
 #============================================ Path for the assets ============================================
-path = "E:/Python Programs/Basic Programs/No Way Down/Assets"
+path = "E:/Python Programs/Games/No Way Down/Assets"
 #============================================ Player ============================================
 img_anim = {"forward":f"{path}/Sprites/Player/forward", "run" : f"{path}/Sprites/Player/run","idle":f"{path}/Sprites/Player/idle"}
 img_anim_frame = {"forward":[12,12,12,12], "run" : [12,12,12,12],"idle":[30,30]}

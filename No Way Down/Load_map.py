@@ -1,6 +1,6 @@
 import csv, pygame
 
-path = "E:/Python Programs/Basic Programs/No Way Down/Assets"
+path = "E:/Python Programs/Games/No Way Down/Assets"
 # Path for Level Files
 levels = [f"{path}/Level/level1.csv",f"{path}/Level/Level3.csv",f"{path}/Level/Level4.csv",f"{path}/Level/Level6.csv",f"{path}/Level/Level7.csv"]
 # Each level Y value such tahe player is always at the buttom of the level 
