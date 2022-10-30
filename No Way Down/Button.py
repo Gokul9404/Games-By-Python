@@ -14,7 +14,6 @@ def set_music_path(paath):
 class PyButton():
     """ Used to Create a button with parameters -> colour, x , y, width , height, **text"""
     def __init__(self,Display, colour, x, y, width, height, text="",font='bookmanoldstlye', font_size=30, font_colour=(0,0,0), Hover_colour=None,Fill=True, Command=None,bold=False):
-        
         self.Colours = {"red":[(255,0,0),(255,77,77),(204,0,0)],"white":[(240,240,240),(250,250,250),(210,215,220)],"green":[(0,255,0),(94,255,100),(77,210,85)]}
         self.x, self.y = x, y
         self.window = Display
@@ -25,16 +24,18 @@ class PyButton():
         self.pos = [0,0]
         self.bold = bold        
         self.cmd_done, self.pressed = False, False
-        if Fill == False:self.Fill = False
-        else:self.Fill = True
-        if Hover_colour: self.hover_colour = Hover_colour
-        else:  self.hover_colour = colour
+        self.Fill = Fill
+        
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        
+        self.hover_colour = Hover_colour if Hover_colour else colour
         if Command: self.command = Command
         else: self.command = None
     
     def Draw(self):
         self.pos = pygame.mouse.get_pos()
-        if ((self.width + self.x) > self.pos[0] > self.x) and ((self.height + self.y) > self.pos[1] > self.y):
+        self.mouse_rect = pygame.Rect(self.pos[0], self.pos[1], 1,1)
+        if self.rect.colliderect(self.mouse_rect):
             if self.Fill:
                 pygame.draw.rect(self.window, self.colour2, pygame.Rect(self.x, self.y, self.width, self.height))
                 pygame.draw.rect(self.window, self.colour1, pygame.Rect(self.x, self.y, self.width-3, self.height-3))
@@ -60,7 +61,6 @@ class PyButton():
         if self.cmd_done: return True
         return False
 
-
 class Hover_button():
     def __init__(self,Display, colour, x, y, width, height, text="",font='bookmanoldstlye', font_size=30, font_colour=(0,0,0), Hover_colour=None,bold=False, Command=None):
         self.x, self.y = x, y
@@ -71,10 +71,12 @@ class Hover_button():
         self.colour, self.bold = colour, bold
         self.pos = [0,0]
         self.cmd_done = False
-        if Hover_colour: self.hover_colour = Hover_colour
-        else: self.hover_colour = self.colour
-        if Command: self.command = Command
-        else: self.command = None
+        
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        
+        self.hover_colour = Hover_colour if Hover_colour else self.colour
+        self.command = Command if Command else None
+        
 
     def Draw(self):
         self.pos = pygame.mouse.get_pos()
@@ -96,7 +98,8 @@ class Hover_button():
 
     def Hover(self):
         self.pos = pygame.mouse.get_pos()
-        if ((self.width + self.x) > self.pos[0] > self.x) and ((self.height + self.y) > self.pos[1] > self.y): return True
+        self.mouse_rect = pygame.Rect(self.pos[0], self.pos[1], 1,1)
+        if self.rect.colliderect(self.mouse_rect): return True
         return False
     
     def Pressed(self):
