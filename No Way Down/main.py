@@ -1,7 +1,6 @@
 import pygame
 import player
 from pygame import *
-from time import sleep
 from Button import PyButton, Hover_button, set_music_path
 from Load_map import load_map, load_tiles, set_map_path, total_levels, player_y_of_level
 from pygame import K_UP, K_DOWN, K_RIGHT, K_LEFT,K_SPACE,K_UP,K_ESCAPE,K_r,K_a,K_w,K_d,KEYUP,KEYDOWN, QUIT, init, Surface, quit
