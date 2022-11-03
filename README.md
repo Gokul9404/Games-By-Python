@@ -4,31 +4,35 @@
 
 All the games are made by using `Python` libraries such as: `pygame` & `tkinter`.
 
-### Controls Keys for most of the game are:
+### *Controls* for the game are:
 > Arrow keys
 `UP` `DOWN` `LEFT` `RIGHT`
 
 > Alphanumeric keys
 `W` `A` `S` `D` `SPACE_BAR`
 
-### Games within this reposiotry are:-
+### *Games within this reposiotry are*:-
 >* Hang-Man
 >* Ping-Png
 >* Stone-Paper-scissor
 >* Space Invaders
 >* Traffic Racer
 >* Tic-tac-teo
->* No Way Down *(Custom made by myself)*
+>* No Way Down *(Custom game)*
 
 ***
 
-# *ScreenShots of the games within the Repo*
-
-### Space-Invaders 
+> # *ScreenShots of the games*
+>
+> ### Space-Invaders 
 ><img align="center" src="https://user-images.githubusercontent.com/71085729/93967124-1e0e8580-fd84-11ea-97d3-e217d5416e36.png" />
-
-### Tic-Tac-Toe Screen-Shot
+>
+> ### Tic-Tac-Toe Screen-Shot
 ><img align="center" src="https://user-images.githubusercontent.com/71085729/93975292-de03ce80-fd94-11ea-91f0-5d8719dda57b.png" />
-
-### Hang-Man Screen-Shot 
+>
+> ### Hang-Man Screen-Shot 
 ><img align="center" src="https://user-images.githubusercontent.com/71085729/93975932-d5f85e80-fd95-11ea-9352-44b7d3d4fe54.png" />
+>
+> ### No-Way-Down Gameplay
+>![Nowaudown](https://user-images.githubusercontent.com/71085729/199325783-3ee9f599-9b09-4a5c-a1a9-00d432d9abff.gif)
+
