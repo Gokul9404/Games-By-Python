@@ -140,7 +140,6 @@ class Ball():
         elif self.PositionX > ColliodX + 10 and  Paddle_no == 2:
             return True
 #=======================================================================================================================================
-# Paddle
 class Paddle():
     def __init__(self, display, Distance, Length, theme=None):
         self.display = display
@@ -152,8 +151,10 @@ class Paddle():
         self.Width = 8
         if theme: 
             self.colour = themes[theme]
+
     def Draw(self):
         pygame.draw.line(self.display, self.colour, self.P1 , self.P2, self.Width)
+    
     def move(self,Width_of_wall , Mv=0):
         if self.P1[1] >= Top + Width_of_wall +2 and Mv == 1:
             self.P1[1] -= self.Veloy
@@ -217,8 +218,8 @@ def add_Score(Player):
 def Show_Score():
     global Score_Player1, Score_Player2
     Score1 = Show_Text(screen,f"Score of Player 1:- {Score_Player1}",12,(255,255,0),22,4)  
-    Score1.Draw()
     Score2 = Show_Text(screen,f"Score of Player 2:- {Score_Player2}",12,(255,255,0),850,4)  
+    Score1.Draw()
     Score2.Draw()
     
 def Game_Screen():
@@ -236,7 +237,7 @@ def Game_Screen():
         Give_Mouse_Pos(Home_but,exit_but)
         Show_Score()
         sleeep = False
-        # Events Handler
+        # Events Handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()  
@@ -255,15 +256,14 @@ def Game_Screen():
         Paddle2.move(Wall_width,Mv=PadMv2)
         # Drawing/Displaying Every Object
         Draw_object(Top_wall ,Buttom_wall, Left_wall, Right_wall,Centre_line,Centre_Circle, Paddle1, Paddle2 ,bal, Home_but,exit_but)
-        # Check for Collision with Paddles
-        # For Paddle No. 1
+        # Check for Collision with Paddle No. 1
         Col1 = bal.notCollid(ColliodX=Paddle1.Dis + Paddle1.Width,ColliodY=[int(Paddle1.P1[1]),int(Paddle1.P2[1])],Paddle_no=1)
         if Col1:
             sleeep = True
             Scoreply2 = Show_Text(screen,f"Player 2 Score:-{Score_Player2} + 1",40,(255,255,0),340,280)
             Scoreply2.Draw()
             Score_Player2 = add_Score(Score_Player2)
-        # For Paddle No. 1
+        # Check for Collision with Paddle No. 2
         Col2 = bal.notCollid(ColliodX=Paddle2.Dis - Paddle2.Width,ColliodY=[int(Paddle2.P1[1]),int(Paddle2.P2[1])],Paddle_no=2)
         if Col2:
             sleeep = True
@@ -289,9 +289,7 @@ def Home_Screen():
     Home_text1 = Show_Text(screen,"By Using Pygame",12,(230,240,245),725,300,Font="rockwell",Italic=True)
     Home_text2 = Show_Text(screen,"Created By:- Gokul",10,(230,240,245),875,555,Font="rockwell")
     Set_text = Show_Text(screen," Difficulty Level               Set Colour  ",15,(140,155,175),375,525,Font="rockwell",Italic=True)
-    # Sound playing in the Background
-    #pygame.mixer.music.load("E:\\Assets & Extras\\New fold\\PingPong.wav")
-    #pygame.mixer.music.play(-1)
+    
     while home_run:
         screen.fill(BackGround)
         Give_Mouse_Pos(Game_run,Exit_but,Level_but,Colour_but1,Colour_but2)
