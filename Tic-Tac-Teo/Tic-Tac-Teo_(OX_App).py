@@ -66,22 +66,20 @@ def btnClick(Butns):
             Butns.config(fg='#4F6368')
             Butns["text"] = "X"
             player_turn= "o"
-            checkForWin()
             chn["text"] = "Chance of Player 2 :- O"
-            turn_no += 1
         elif Butns["text"] == " " and player_turn == "o":
+            turn_no += 1
             Butns.config(fg='#FE5F55')
             Butns["text"] = "O"
             player_turn= "x"
-            checkForWin()
             chn["text"] = "Chance of Player 1 :- X"
-            turn_no += 1
         else:
             tmsg.showinfo("Tic-Tac-Toe", "Button already Clicked!")
+        checkForWin()       
 
 def checkForWin():
     """Checks the Conditions of winning of any Player or Condition of Tie b/w Players"""
-    global Winner_Name, But1, But2, But3, But4, But5, But6, But7, But8, But9, turn_no, But_rep, But_fin, s1, s2, player1_score, player2_score, win
+    global Winner_Name, But1, But2, But3, But4, But5, But6, But7, But8, But9, turn_no, But_rep, But_fin, s1, s2, player1_score, player2_score, win, chn
     if ((But1['text'] == 'X' and But2['text'] == 'X' and But3['text'] == 'X') or
         (But4['text'] == 'X' and But5['text'] == 'X' and But6['text'] == 'X') or
         (But7['text'] =='X' and But8['text'] == 'X' and But9['text'] == 'X' )or
@@ -90,17 +88,11 @@ def checkForWin():
         (But1['text'] == 'X' and But4['text'] == 'X' and But7['text'] == 'X') or
         (But2['text'] == 'X' and But5['text'] == 'X' and But8['text'] == 'X') or
         (But7['text'] == 'X' and But6['text'] == 'X' and But9['text'] == 'X')):
-        disableButton()
         turn_no = 0
         s1 += 1
         Winner_Name = p1.get() + " Wins!"
-        tmsg.showinfo("Tic-Tac-Toe", Winner_Name)
         win = 0
         player1_score['text'] = f'Score of Player 1:-{str(s1)}'
-
-    elif(turn_no == 9):
-        tmsg.showinfo("Tic-Tac-Toe", "It is a Tie")
-        win = 0
 
     elif ((But1['text'] == 'O' and But2['text'] == 'O' and But3['text'] == 'O') or
           (But4['text'] == 'O' and But5['text'] == 'O' and But6['text'] == 'O') or
@@ -110,32 +102,41 @@ def checkForWin():
           (But1['text'] == 'O' and But4['text'] == 'O' and But7['text'] == 'O') or
           (But2['text'] == 'O' and But5['text'] == 'O' and But8['text'] == 'O') or
           (But7['text'] == 'O' and But6['text'] == 'O' and But9['text'] == 'O')):
-        disableButton()
         turn_no = 0
         s2 += 1
         Winner_Name = p2.get() + " Wins!"
-        tmsg.showinfo("Tic-Tac-Toe", Winner_Name)
+        chn["text"] = " "
         win = 0
         player2_score['text'] = f'Score of Player 2:-{str(s2)}'
-    if win == 0:
-        F1.grid_configure(padx=0)
+
+    if(turn_no >= 9) or (win == 0):
+        turn_no = 0
+
         But_rep = Button(FM, text=' Replay ', font='Arial 12 italic',fg='#E63946', bg='#FDFFB6', command=rep)
-        But_rep.grid(row=0, column=6)
         But_fin = Button(FM, text=' Finish ', font='Arial 12 italic', fg='#E63946', bg='#FDFFB6', command=Finish)      
+        But_rep.grid(row=0, column=6)
         But_fin.grid(row=1, column=6, ipadx=4)
-        win += 1
+        if(turn_no >= 9):
+            tmsg.showinfo("Tic-Tac-Toe", "It is a Tie")
+            win = 0
+        elif win == 0:        
+            tmsg.showinfo("Tic-Tac-Toe", Winner_Name)
+            F1.grid_configure(padx=0)
+            win += 1
+        disableButton()
+        
+    print(turn_no)
 
 def Finish():
     '''When Finish button get clicked it will finish the Game'''
     global But_rep, But_fin
-    if s1 > s2:
-        tmsg.showinfo('Game Finished...',f'Winner of the Game \nPlayer 1 :- {p1.get()} \nThe game is going to Finish Itself')
-    elif s2 > s1:
-        tmsg.showinfo('Game Finished...',f'Winner of the Game \nPlayer 2 :- {p2.get()} \nThe game is going to Finish Itself')
-    elif s2 == s1:
-        tmsg.showinfo('Game Finished...',f"There is Tie Between The Player's \n The game is going to Finish Itself")
-    rep()
-    disableButton()
+    if s2 == s1:
+        tmsg.showinfo('Game Finished!',f"There is Tie Between The Player's \nthe Game Window is going to destro itself")
+    else:
+        if s1 > s2:
+            tmsg.showinfo('Game Finished!',f'Winner of the Game \nPlayer 1 :- {p1.get()} \nthe Game Window is going to destro itself')
+        elif s2 > s1:
+            tmsg.showinfo('Game Finished!',f'Winner of the Game \nPlayer 2 :- {p2.get()} \nthe Game Window is going to destro itself')
     Gm_tk.destroy()
 
 #=======================================================================================================================================
