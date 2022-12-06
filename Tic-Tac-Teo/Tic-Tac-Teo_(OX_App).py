@@ -1,5 +1,4 @@
-import tkinter
-from tkinter import Frame , Label, Pack, Grid, Place, Button, Tk, Entry, StringVar, ACTIVE, DISABLED, RAISED, RIDGE, SUNKEN,TOP,BOTTOM,X
+from tkinter import Frame , Label, Button, Tk, Entry, StringVar, DISABLED, ACTIVE, RAISED, RIDGE, TOP, BOTTOM, X
 import tkinter.messagebox as tmsg
 
 # Game window
@@ -8,8 +7,7 @@ Gm_tk.title("Tic Tac Toe")
 Gm_tk.geometry('610x715')
 Gm_tk.resizable(0,0)
 Gm_tk.config(bg="#ffe78f")
-Gm_tk.wm_iconbitmap(r'E:\pyhton progs\Games\Tic-Tac-Teo\icnn.ico')
-
+Gm_tk.wm_iconbitmap(r'E:\Python Programs\Games\Tic-Tac-Teo\icnn.ico')
 #=======================================================================================================================================
 Buts = StringVar()
 # Name of the Winner will be set Here
@@ -44,30 +42,18 @@ def sub():
 
 def disableButton():
     """Disable the Buttons when any player wins"""
-    global But1, But2, But3, But4, But5, But6, But7, But8, But9
-    But1.configure(state=DISABLED)
-    But2.configure(state=DISABLED)
-    But3.configure(state=DISABLED)
-    But4.configure(state=DISABLED)
-    But5.configure(state=DISABLED)
-    But6.configure(state=DISABLED)
-    But7.configure(state=DISABLED)
-    But8.configure(state=DISABLED)
-    But9.configure(state=DISABLED)
+    global btn_list
+    for btn in btn_list:
+        btn.configure(state=DISABLED)
 
 def rep():
     """Enable the Buttons when Replay the Game"""
-    global But1, But2, But3, But4, But5, But6, But7, But8, But9, But_rep
-    But1.configure(state=ACTIVE, text=" ")
-    But2.configure(state=ACTIVE, text=" ")
-    But3.configure(state=ACTIVE, text=" ")
-    But4.configure(state=ACTIVE, text=" ")
-    But5.configure(state=ACTIVE, text=" ")
-    But6.configure(state=ACTIVE, text=" ")
-    But7.configure(state=ACTIVE, text=" ")
-    But8.configure(state=ACTIVE, text=" ")
-    But9.configure(state=ACTIVE, text=" ")
+    global btn_list, But_rep, But_fin, turn_no
+    turn_no = 0
     But_rep.destroy()
+    But_fin.destroy()
+    for btn in btn_list:
+        btn.configure(state=ACTIVE, text=" ")
 
 def btnClick(Butns):
     """Handles the player turn and calls checkForWin function"""
@@ -76,6 +62,7 @@ def btnClick(Butns):
         tmsg.showerror('Enter Name!',"Plaese submit the names of the player")
     else:
         if Butns["text"] == " " and player_turn == "x":
+            turn_no += 1
             Butns.config(fg='#4F6368')
             Butns["text"] = "X"
             player_turn= "o"
@@ -134,7 +121,7 @@ def checkForWin():
         F1.grid_configure(padx=0)
         But_rep = Button(FM, text=' Replay ', font='Arial 12 italic',fg='#E63946', bg='#FDFFB6', command=rep)
         But_rep.grid(row=0, column=6)
-        But_fin = Button(FM, text=' Finish ', font='Arial 12 italic', fg='#E63946', bg='#FDFFB6', command=Finish)
+        But_fin = Button(FM, text=' Finish ', font='Arial 12 italic', fg='#E63946', bg='#FDFFB6', command=Finish)      
         But_fin.grid(row=1, column=6, ipadx=4)
         win += 1
 
@@ -208,6 +195,10 @@ But8.grid(row=2, column=1,padx=2.5, pady=2.5)
 But9 = Button(F2, text=' ', font='Times 20 bold', bg='#EEF5DB', height=5, width=10, command=lambda: btnClick(But9))
 But9.grid(row=2, column=2,padx=2.5, pady=2.5)
 
+But_rep = Button(FM, text=' Replay ', font='Arial 12 italic',fg='#E63946', bg='#FDFFB6', command=rep)
+But_fin = Button(FM, text=' Finish ', font='Arial 12 italic', fg='#E63946', bg='#FDFFB6', command=Finish)      
+
+btn_list = [But1, But2, But3, But4, But5, But6, But7, But8, But9]
 #=======================================================================================================================================
 # Play The Game In The PYTHON File Itself
 if __name__ == "__main__":
