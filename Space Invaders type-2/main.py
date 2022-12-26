@@ -1,8 +1,6 @@
 import pygame
-from pygame import init, Surface , time
 from pygame import mixer
-from random import randint
-from pygame import KEYDOWN, KEYUP, K_a, K_d, K_w, K_UP, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE, K_r
+from pygame import KEYDOWN, KEYUP, K_a, K_d, K_LEFT, K_RIGHT, K_ESCAPE, K_SPACE, K_r, init, Surface
 from text_and_button import Show_Text, Button
 from characters import Player, Enemy_sprites
 # Initialise Pygame
