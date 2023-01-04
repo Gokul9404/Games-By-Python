@@ -1,5 +1,5 @@
 import pygame
-from pygame import mouse, BLEND_RGB_ADD
+from pygame import BLEND_RGB_ADD
 from pygame import mixer
 
 mixer.init()
